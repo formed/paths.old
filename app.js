@@ -5,7 +5,7 @@ var hbs = require('hbs');
 
 app.set('view engine', 'html');	// Changes the default extension from .hbl to .html
 app.engine('html', hbs.__express); // Uses the handlebar template engine
-
+app.use(express.static('public'));
 
 app.get('/', function(req, res) {
 	res.render('index');
