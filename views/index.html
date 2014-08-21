@@ -1,8 +1,7 @@
-<h1>Paths</h1>
- <p>Using d3 to visualise moves data</p>
-{{#each entries}}
-    <p>
-        <a href="/article/{{id}}">{{title}}</a><br/>
-        Published: {{published}}
-    </p>
-{{/each}}
+{{#unless user}}
+    <div id='banner'>
+        <h2>Welcome to Paths. <a href="/auth/moves">Login</a> with Moves to continue.</h2> 
+    </div>
+{{/unless}}
+
+

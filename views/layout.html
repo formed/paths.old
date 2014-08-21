@@ -1,19 +1,94 @@
-<html>
-	 <link href="/Flat-UI/bootstrap/css/bootstrap.css" rel="stylesheet">
-	 <link href="/Flat-UI/css/flat-ui.css" rel="stylesheet">
+<!doctype html>
+<html lang="en">
 <head>
-    <title>{{title}}</title>
+<meta charset="utf-8">
+
+
+<title>Paths</title>
+
+<!-- Latest compiled and minified JavaScript -->
+<link rel="stylesheet" href="normalise.css">
+<link rel="stylesheet" href="typebase.css">
+<link rel="stylesheet" href="visualise.css">
 </head>
- 
 <body>
- 	<div class="=container">
-    {{{body}}}
- 
-    <footer>
-        <p>
-            <a href="/">Home</a> ~ <a href="/about">About Me</a>
+
+<header>
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        {{#if user}}
+            <li><a href="/account">Account</a></li> 
+           <li><a href="/logout">Log Out</a></li>
+        {{else}}
+            <li><a href="/auth/moves">Log In</a></li>
+        {{/if}}
+    </ul>
+</header>
+
+
+{{{body}}}
+
+<div class='chart'></div>
+<!-- /.container -->
+
+<!-- OLD STUFF
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="">Paths</a>
+
+        <ul>
+            <li class="pure-menu-selected"><a href="/">Home</a></li>
+            {{#if user}}
+                <li><a href="/account">Account</a></li> 
+                <li><a href="/logout">Log Out</a></li>
+            {{else}}
+                <li><a href="/login">Log In</a></li>
+            {{/if}}
+        </ul>
+    </div>
+</div>
+
+{{#unless user}}
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Paths</h1>
+        <p class="splash-subhead">
+            Where do you want to go?
         </p>
-    </footer>
-     </div>
+        <p>
+            <a href="/auth/moves" class="pure-button pure-button-primary">Login with Moves</a>
+        </p>
+    </div>
+</div>
+{{/unless}}
+
+<div class="content-wrapper">
+    <div class="content">
+        <h2 class="content-head is-center">Your paths</h2>
+            
+        <div class="pure-g">
+        <div class="pure-u-1-1">
+            
+            {{{body}}}
+
+        </div>
+                        
+        </div>
+    </div>
+
+    <div class="footer l-box is-center">
+        <div class="chart"></div>
+    </div>
+
+</div> -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://d3js.org/d3.geo.tile.v0.min.js"></script>
+        <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        <script src="visualise.js"></script>
 </body>
 </html>
