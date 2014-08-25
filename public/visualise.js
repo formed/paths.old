@@ -3,8 +3,8 @@
 
 $(document).ready(function() {
     $(document).scrollsnap({
-        snaps: 'section',
-        proximity: 100
+        snaps: '.sticky',
+        proximity: 200
     });
 });
 
