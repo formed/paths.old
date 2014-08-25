@@ -1,57 +1,64 @@
 
+body {margin:0; padding:0;}
+
 a {text-decoration: none; color: #00D4F5;}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: normal;
+  font-size: 1.4em;
+  padding-left: 0;
+  margin-left: 0;
+  margin-bottom: 36px;
+  padding-top:36px;
+}
+
 header {
-  position:fixed;
-  top:0;
-  left:0;
-  height:36px;
-  border-bottom: 1px solid silver;
+	text-align: center;
   width:100%;
+  padding-left: 36px;
+  height: 180px
 }
 
 header ul {
+	text-align: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    margin-left: 20px
+    width:100%;
 }
 
 header li {
-    float: left;
-    height: 36px;
-    vertical-align: bottom;
-    padding-top: 6px;
-    padding-right: 12px;
+	display: inline;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9em;
     text-transform: uppercase;
+    text-align: center;
+    margin:0 auto;
 }
 
-header a {
+header li a {
     text-decoration: none;
     color: #444;
+    display: inline-block;
+    width: 120px
 }
 
-header a:visited { color: #444;}
-header a:hover { color: red;}
+header li a:visited { color: #444;}
+header li a:hover { color: black;}
 
-#banner {
-  position: fixed;
-  top:200px;
-  left:0;
-  width:100%;
-  background-color:white;
-  z-index: 99;
-  text-align: center;
-  min-height: 144px;
-  border-top: 1px solid silver;
-  border-bottom: 1px solid silver;
+footer {width: 100%; text-align: center;padding-top:36px; padding-bottom: 36px;
+    font-family: 'Cinzel', serif;
+    min-height: 300px;
 }
 
+#chart {
+  margin: 0;
+  padding: 0;
+}
 .svg-chart {
   background-color: black;
-  position:fixed;
-  top: 37px;
-  left:0;
 }
 
 path {
@@ -66,9 +73,6 @@ path {
 .highway { stroke: #6E6E6E; stroke-width: 1.5px; stroke-opacity: 0.5;}
 .rail { stroke: #7de; }
 
-body {
-  padding-top: 50px;
-}
 .starter-template {
   padding: 40px 15px;
   text-align: center;

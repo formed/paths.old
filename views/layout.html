@@ -1,19 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-
-
-<title>Paths</title>
-
-<!-- Latest compiled and minified JavaScript -->
-<link rel="stylesheet" href="normalise.css">
-<link rel="stylesheet" href="typebase.css">
-<link rel="stylesheet" href="visualise.css">
+    <meta charset="utf-8">
+    <title>Paths</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cinzel">
+    <link rel="stylesheet" href="visualise.css">
 </head>
+
 <body>
 
+<div class="main">
+<section>
 <header>
+    <h1>Paths @ Formed</h1>
     <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
         {{#if user}}
@@ -24,67 +23,21 @@
         {{/if}}
     </ul>
 </header>
+</section>
 
+<section>
+    {{{body}}}
+    <div id='chart'></div>
 
-{{{body}}}
+</section>
 
-<div class='chart'></div>
-<!-- /.container -->
-
-<!-- OLD STUFF
-<div class="header">
-    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="">Paths</a>
-
-        <ul>
-            <li class="pure-menu-selected"><a href="/">Home</a></li>
-            {{#if user}}
-                <li><a href="/account">Account</a></li> 
-                <li><a href="/logout">Log Out</a></li>
-            {{else}}
-                <li><a href="/login">Log In</a></li>
-            {{/if}}
-        </ul>
-    </div>
-</div>
-
-{{#unless user}}
-<div class="splash-container">
-    <div class="splash">
-        <h1 class="splash-head">Paths</h1>
-        <p class="splash-subhead">
-            Where do you want to go?
-        </p>
-        <p>
-            <a href="/auth/moves" class="pure-button pure-button-primary">Login with Moves</a>
-        </p>
-    </div>
-</div>
-{{/unless}}
-
-<div class="content-wrapper">
-    <div class="content">
-        <h2 class="content-head is-center">Your paths</h2>
-            
-        <div class="pure-g">
-        <div class="pure-u-1-1">
-            
-            {{{body}}}
-
-        </div>
-                        
-        </div>
-    </div>
-
-    <div class="footer l-box is-center">
-        <div class="chart"></div>
-    </div>
-
-</div> -->
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<section>
+    <footer>This is the footer</footer>
+</section>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="jquery.easing.min.js"></script>
+        <script src="jquery.scrollstop.js"></script>
+        <script src="jquery.scrollsnap.js"></script>
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="http://d3js.org/d3.geo.tile.v0.min.js"></script>
         <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
