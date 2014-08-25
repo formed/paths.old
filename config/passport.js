@@ -4,12 +4,12 @@
 
 // Load the authentication strategies we require
 // var AsanaStrategy = require('passport-asana').Strategy;
-var MovesStrategy = require('../third_party_modules/passport-moves').Strategy;
+var MovesStrategy 	= require('../third_party_modules/passport-moves').Strategy;
 
 // load up the user model uncomment this
-// var User = require('../models/user');
+var User 			= require('../models/user');
 
-var config = require('./config');
+var config 			= require('./config');
 
 module.exports = function(passport) {
 	// Passport session setup.

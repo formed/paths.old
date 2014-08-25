@@ -8,7 +8,7 @@ module.exports = function(app, passport) {
 		res.render('index', { user: req.user, name: req.user});
 	});
 
-	app.get('/account', ensureAuthenticated, function(req, res){
+	app.get('/account', isLoggedIn, function(req, res){
 	  res.render('account', { user: req.user });
 	});
 
@@ -51,9 +51,9 @@ module.exports = function(app, passport) {
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
-function ensureAuthenticated(req, res, next) {
+function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  	res.redirect('/login'); 
+  	res.redirect('/'); 
   	conaolw.log('Could not authenticate');
 	}
 };
