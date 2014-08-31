@@ -2,7 +2,18 @@
 /*jslint node: true */
 'use strict';
 
+var M = require('./lib/moves');
+
 module.exports = function(app, passport) {
+
+	// Plot the results
+	app.get('/plot', function(req, res){
+		var m = new M()
+		var r = m.storyline()
+		console.dir(r)
+		res.render('index', { user: req.user, name: req.user});
+	});
+	
 	app.get('/', function(req, res){
 		console.log(req.user);
 		res.render('index', { user: req.user, name: req.user});
