@@ -39,12 +39,38 @@ module.exports = function(passport) {
 	  function(accessToken, refreshToken, profile, done) {
 	    // asynchronous verification, for effect...
 	    process.nextTick(function () {
+
+	    	// Check to see if a user already exists
+	    	User.findOne({'moves.id' : profile.id}, function(err, user){
+	    		// If there is an error stop everything and report the error
+	    		if (err)
+	    			return done(err);
+	    		if (user) {
+	    			return done(null, user); // User found return this user
+	    		} else {
+	    			// If no user was found create a new one
+	    			var newUser	= new User();
+
+	    			// Set all the moves information in the model.
+	    			newUser.moves.id 		= profile.id;
+	    			newUser.moves.token 	= accessToken;
+
+	    			// Save our new user to the db
+	    			newUser.save(function(err) {
+	    				if (err) 
+	    					throw err;
+
+	    				// if successful return the new user
+	    				return done(null, newUser);
+	    			});
+	    		}
+	    	});
 	      
 	      // To keep the example simple, the user's Moves profile is returned to
 	      // represent the logged-in user.  In a typical application, you would want
 	      // to associate the Moves account with a user record in your database,
 	      // and return that user instead.
-	      return done(null, profile);
+	      // return done(null, profile);
 	    });
 	  }
 	));
