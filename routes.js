@@ -9,9 +9,7 @@ module.exports = function(app, passport) {
 	// Plot the results
 	app.get('/plot', function(req, res){
 		var m = new M()
-		var r = m.storyline()
-		console.dir(r)
-		res.render('index', { user: req.user, name: req.user});
+		m.storyline(res, req)
 	});
 	
 	app.get('/', function(req, res){
