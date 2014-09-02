@@ -73,6 +73,11 @@ path {
   stroke-linecap: round;
 }
 
+.cycling {stroke: #00cdec;}
+.walking {stroke: #00d459;}
+.transport {stroke: #faff66;}
+
+
 .major_road { stroke: #6E6E6E; stroke-opacity: 0.5;}
 .minor_road { stroke: #6E6E6E; stroke-opacity: 0.3;}
 .highway { stroke: #6E6E6E; stroke-width: 1.5px; stroke-opacity: 0.5;}
