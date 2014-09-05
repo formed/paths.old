@@ -2,7 +2,9 @@
 /*jslint node: true */
 'use strict';
 
-var M = require('./lib/moves');
+var M = require('./lib/moves-api.js');
+var Moves= require('./models/moves.js');
+
 
 module.exports = function(app, passport) {
 
@@ -12,6 +14,17 @@ module.exports = function(app, passport) {
 		m.storyline(res, req)
 	});
 	
+	app.get('/map', function(req, res){
+		Moves.find()
+		.select('-_id tracks')
+		.exec( function (err, tracks) {
+			console.log('\n\n\ ******** I MADE IT ******** \n\n')
+			//res.render('index', { user: req.user, name: req.user, data: tracks});
+			res.json(tracks)
+		})
+		
+	});
+
 	app.get('/', function(req, res){
 		console.log(req.user);
 		res.render('index', { user: req.user, name: req.user});
@@ -55,7 +68,7 @@ module.exports = function(app, passport) {
 	  res.redirect('/');
 	});
 
-	// Simple route middleware to ensure user is authenticated.
+// Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the

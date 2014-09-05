@@ -1,15 +1,35 @@
-// visualise.js
-'use strict';
+/*
+var vis = d3.select('.chart').append('svg');
+var PI = Math.PI;
 
-$(document).ready(function() {
-    $(document).scrollsnap({
-        snaps: 'section',
-        proximity: 100
-    });
-});
+function taskArc(startDate, stopDate, fillColor) {
+    var r = (stopDate - startDate);
+    var arc = d3.svg.arc()
+    .innerRadius(r)
+    .outerRadius(r + 2)
+    .startAngle(-90 * (PI / 180)) //convert from degs to radians
+    .endAngle(90 * (PI / 180)); //just radians
+    vis.append('path')
+    .attr('d', arc)
+    .attr('transform', 'translate('+ stopDate +',490)')
+    .style('fill', fillColor);
+}
+var i = 0;
+for (i = 0; i < 300; i++) {
+    var taskDuration = Math.random() * 470;
+    var start = -470 + 940 * Math.random();
+    var stop = start + taskDuration;
+    var fillColor = 'black';
+    if (Math.random() > 0.8) {fillColor = '#C0392B'};
+    console.log(fillColor);
+    taskArc(start, stop, fillColor);
+}
 
-// ********************** D3 Visualisations **********************
+// Define the date as being anywhere between 1 and 470
+// !st set the length 
 
+*/
+d3.json('http://127.0.0.1:3000/map', function(error, trackData) {
 var data = d3.csv("http://127.0.0.1:3000/gpx_out.csv",function(csv) {
 
 var latitude = [];
@@ -22,7 +42,7 @@ for (var i = 0; i < csv.length; i++) {
     dataOut[i] = [latitude[i], longitude[i]]
 }
 
-var width = Math.max(760, window.innerWidth),
+var width = Math.max(960, window.innerWidth),
     height = Math.max(500, window.innerHeight);
 
 var tiler = d3.geo.tile()
@@ -51,10 +71,11 @@ var geoJSON = {
 var path = d3.geo.path()
     .projection(projection);
 
-var svg = d3.select("#chart").append("svg")
+var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("class", "svg-chart");
+    .attr("class", "svg-chart");;
+
 svg.selectAll("g")
     .data(tiler
       .scale(projection.scale() * 2 * Math.PI)
@@ -71,11 +92,24 @@ svg.selectAll("g")
       });
     });
 
-svg.selectAll("path")
-    .data(geoJSON55.features)
+    /*
+    svg.selectAll("path")
+    .data(geoJSON.features)
     .enter().append("path")
-    .attr("class", function(d) { return d.properties.activity; })
     .attr("d",path)
-    .attr("stroke-opacity", 0.5)
-    .attr("stroke-width", 0.5)  
+    .attr("stroke-opacity", 0.4)
+    .attr("stroke-width", 0.5)
+    */
+    for (var i = 0; i < trackData.length; i++) {
+        console.log('We got here at least\n')
+        svg.selectAll("path")
+        .data(trackData[i].tracks.features)
+        .enter().append("path")
+        .attr("class", function(d) { return d.properties.activity; })
+        .attr("d",path)
+        .attr("stroke-opacity", 0.4)
+        .attr("stroke-width", 0.5)
+    };
+
+})
 })
