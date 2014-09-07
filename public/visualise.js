@@ -50,9 +50,9 @@ var tiler = d3.geo.tile()
 
 var projection = d3.geo.mercator()
     .center([-2.6, 51.5])
-    .scale((1 << 20) / 2 / Math.PI)
+    .scale((1 << 15) / 2 / Math.PI)
     .translate([width / 2, height / 2]);
-
+/*
 var geoJSON = {
     "type": "FeatureCollection",
     "features":[
@@ -66,7 +66,7 @@ var geoJSON = {
             }
         }
     ]
-}
+} */
 
 var path = d3.geo.path()
     .projection(projection);
