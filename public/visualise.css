@@ -68,14 +68,25 @@ footer {width: 100%; text-align: center;padding-top:36px; padding-bottom: 36px;
 
 path {
   fill: none;
-  stroke: #FF21F8;
+  stroke: none;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
-.cycling {stroke: #00cdec; stroke-opacity: 0.6;stroke-width: 1}
+.graticule {opacity:0;}
+
+.cycling {stroke: #00cdec; stroke-opacity: 0.6;stroke-width: 0.5}
 .walking {stroke: #00d459; stroke-opacity: 0.8; stroke-width: 1}
-.transport {stroke: #FF21F8; stroke-opacity: 0.4; stroke-width: 0.5}
+.transport {stroke: #FF21F8; stroke-opacity: 0.3; stroke-width: 0.2}
+
+.riverbank  { stroke: #6E6E6E; stroke-opacity: 0; fill: #DEDEDE;}
+.ocean  { stroke: #6E6E6E; stroke-opacity: 0; fill: #DEDEDE;}
+.dock  { stroke: #6E6E6E; stroke-opacity: 0.5;}
+
+.water { stroke: #6E6E6E; stroke-opacity: 0.5; fill:#DEDEDE;}
+.reservoir { stroke: #6E6E6E; stroke-opacity: fill:#DEDEDE;}
+.scree { stroke: #6E6E6E; stroke-opacity: fill:#DEDEDE;}
+.lake { stroke: #6E6E6E; stroke-opacity: fill:#DEDEDE;}
 
 
 .major_road { stroke: #6E6E6E; stroke-opacity: 0.5;}
@@ -86,4 +97,41 @@ path {
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+
+body {
+  margin: 0;
+}
+
+.map {
+  position: relative;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+}
+
+.tile {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+}
+
+.tile path {
+  fill: none;
+  stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.tile .major_road { stroke: #776; }
+.tile .minor_road { stroke: #ccb; }
+.tile .highway { stroke: #f39; stroke-width: 1.5px; }
+.tile .rail { stroke: #7de; }
+
+.info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
