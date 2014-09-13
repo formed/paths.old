@@ -2,6 +2,7 @@
 /*jslint node: true */
 'use strict';
 
+var compression = require('compression');
 var express 	= require('express');					
 var passport 	= require('passport');
 var mongoose 	= require('mongoose');
@@ -20,18 +21,20 @@ require('./config/passport')(passport); 			// Configure passport authentication
 var app = express();
 
 // Set up express app
+app.use(compression({
+  threshold: 512
+}));
+app.set('json spaces', 0);
 app.set('views', __dirname + '/views');
 app.use(express.logger('dev'));
 app.use(express.errorHandler());
 app.use(express.methodOverride());
-app.use(express.cookieParser('insert-some-entropy-here'));
+app.use(express.cookieParser('flyingfish'));
 app.use(express.session());
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 app.use(express.static(__dirname + '/public'));
 
-// Initialize Passport!  Also use passport.session() middleware, to support
-// persistent login sessions (recommended).
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);

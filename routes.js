@@ -5,18 +5,27 @@
 var M = require('./lib/moves-api.js');
 var Moves= require('./models/moves.js');
 
+// Routes
+// Index ifLoggedin redirect
 
 module.exports = function(app, passport) {
 
-	// Plot the results
-	app.get('/plot', function(req, res){
+	// Index page.
+	app.get('/', function(req, res){
+		console.log(req.user);
+		res.render('index', { user: req.user, name: req.user});
+	});
+
+	// Inserts the data into
+	app.get('/moves/sync', function(req, res){
 		var m = new M()
 		m.storyline(res, req)
 	});
 	
-	app.get('/map', function(req, res){
+	// Serves the moves storyline data served from db
+	app.get('/moves/tracks', function(req, res){
 		Moves.find()
-		.select('-_id tracks')
+		.select('-_id tracks').sort([['day', 'ascending']])
 		.exec( function (err, tracks) {
 			console.log('\n\n\ ******** I MADE IT ******** \n\n')
 			//res.render('index', { user: req.user, name: req.user, data: tracks});
@@ -25,10 +34,6 @@ module.exports = function(app, passport) {
 		
 	});
 
-	app.get('/', function(req, res){
-		console.log(req.user);
-		res.render('index', { user: req.user, name: req.user});
-	});
 
 	app.get('/account', isLoggedIn, function(req, res){
 	  res.render('account', { user: req.user });
@@ -63,7 +68,7 @@ module.exports = function(app, passport) {
 	    res.redirect('/');
 	  });
 
-	app.get('/logout', function(req, res){
+	app.get('/auth/moves/logout', function(req, res){
 	  req.logout();
 	  res.redirect('/');
 	});
@@ -75,7 +80,7 @@ module.exports = function(app, passport) {
 //   login page.
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  	res.redirect('/'); 
+  	res.redirect('/login'); 
   	conaolw.log('Could not authenticate');
 	}
 };
