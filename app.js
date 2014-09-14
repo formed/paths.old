@@ -41,4 +41,4 @@ app.use(app.router);
 
 require('./routes')(app, passport); // Load our routes and pass in our app and passport
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);

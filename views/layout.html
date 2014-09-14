@@ -26,23 +26,40 @@
 </header>
 </section>
 
-<section class='sticky'>
+<section class='sticky' id='section4'>
     {{{body}}}
-    <div id='chart'></div>
+<div id='chart'></div>
+</section>
 
+<section class='sticky' id='section3'>
+</section>
+
+<section class='sticky' id='section2'>
+</section>
+
+<section class='sticky' id='section1'>
 </section>
 
 <section class='sticky'>
     <footer>This is the footer</footer>
 </section>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="jquery.easing.min.js"></script>
-        <script src="jquery.scrollstop.js"></script>
-        <script src="jquery.scrollsnap.js"></script>
+
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="http://d3js.org/d3.geo.tile.v0.min.js"></script>
         <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
         <script src="http://d3js.org/topojson.v1.min.js"></script>
         <script src="visualise.js"></script>
+        <script src="jquery.easing.min.js"></script>
+        <script src="jquery.scrollstop.js"></script>
+        <script src="jquery.scrollsnap.js"></script>
+        <script type="text/javascript">
+$(document).ready(function() {
+    $(document).scrollsnap({
+        snaps: '.sticky',
+        proximity: 200
+    });
+});
+</script>
 </body>
 </html>
