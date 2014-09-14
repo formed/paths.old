@@ -7,8 +7,8 @@ var tiler = d3.geo.tile()
     .size([width, height]);
 
 var projection = d3.geo.mercator()
-    .center([-2.6, 51.5])
-    .scale((1 <<14) / 2 / Math.PI)
+    .center([-2.65, 51.48])
+    .scale((1 << 20) / 2 / Math.PI)
     .translate([width / 2, height / 2]);
 
 
@@ -42,8 +42,6 @@ svg.selectAll("g")
             .attr("class", function(d) { return d.properties.kind; })
             .attr("d", path);
       });
-
-
  });
 
 d3.json('http://127.0.0.1:3000/moves/tracks', function(error, trackData) {
