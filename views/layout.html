@@ -14,15 +14,8 @@
 <section>
 <header>
     <h1>Paths @ Formed</h1>
-    <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-        {{#if user}}
-            <li><a href="/account">Account</a></li> 
-           <li><a href="/logout">Log Out</a></li>
-        {{else}}
-            <li><a href="/auth/moves">Log In</a></li>
-        {{/if}}
-    </ul>
+    <p id='loading'><em>Loading your paths, bear with us...</em></p>
+    <p id='zoomInstructions'><em>Press z to zoom out, x to zoom in</em></p>
 </header>
 </section>
 
@@ -44,7 +37,7 @@
     <footer>This is the footer</footer>
 </section>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+        <script src="jquery.hotkeys.js"></script>
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="http://d3js.org/d3.geo.tile.v0.min.js"></script>
         <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
@@ -53,6 +46,8 @@
         <script src="jquery.easing.min.js"></script>
         <script src="jquery.scrollstop.js"></script>
         <script src="jquery.scrollsnap.js"></script>
+
+        
         <script type="text/javascript">
 $(document).ready(function() {
     $(document).scrollsnap({

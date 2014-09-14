@@ -60,6 +60,8 @@ footer {width: 100%; text-align: center;padding-top:36px; padding-bottom: 36px;
 
 section {margin:0; padding: 0; margin-top:-5px;}
 
+#zoomInstructions {display: none;}
+
 #chart {
   margin: 0;
   padding: 0;
@@ -120,67 +122,25 @@ path {
 .cycling,
 .transport {stroke: white;}
 
+.svg-chart {border: 1px solid #333333;}
 
-/* ======= SECTION 1 ================ */
+.svg-chart { background-color: black;}
 
-#section1 .svg-chart { background-color: #DD0D79;}
+.walking {stroke: #83DD0D; stroke-opacity: 0.8; stroke-width: 1}
+.running {stroke: #FFB800; stroke-opacity: 0.8; stroke-width: 1}
+.cycling {stroke: #00cdec; stroke-opacity: 0.6;stroke-width: 0.5}
+.transport {stroke: #FF21F8; stroke-opacity: 0.2; stroke-width: 0.1}
 
-#section1 .walking {stroke: white; stroke-opacity: 0.8; stroke-width: 1}
-#section1 .running {stroke: white; stroke-opacity: 0.8; stroke-width: 1}
-#section1 .cycling {stroke: white; stroke-opacity: 0.6;stroke-width: 1}
-#section1 .transport {stroke: white; stroke-opacity: 0.6; stroke-width: 1}
+.major_road { stroke: #6E6E6E; stroke-opacity: 0.5;}
+.minor_road { stroke: #6E6E6E; stroke-opacity: 0.3;}
+.highway { stroke: #6E6E6E; stroke-width: 1.5px; stroke-opacity: 0.5;}
+.rail { stroke: #7de; }
 
-
-/* ======= SECTION 2 ================ */
-
-#section2 .svg-chart { background-color: #0DC4DD;}
-
-#section2 .walking {stroke: white; stroke-opacity: 1; stroke-width: 2}
-#section2 .running {stroke: white; stroke-opacity: 1; stroke-width: 2}
-#section2 .cycling {stroke: white; stroke-opacity: 1;stroke-width: 2}
-#section2 .transport {stroke: white; stroke-opacity: 0.6; stroke-width: 1}
-
-/* ======= SECTION 3 ================ */
-
-#section3 .svg-chart { background-color: #da0505;}
-
-#section3 .major_road { stroke: #a10000; stroke-opacity: 0.3;}
-#section3 .minor_road { stroke: #a10000; stroke-opacity: 0.3;}
-#section3 .highway { stroke: #a10000; stroke-width: 1.5px; stroke-opacity: 0.4;}
-#section3 .rail { stroke: #a10000; }
-
-#section3 .walking {stroke: #83DD0D; stroke-opacity: 0.8; stroke-width: 1}
-#section3 .running {stroke: #FFB800; stroke-opacity: 0.8; stroke-width: 1}
-#section3 .cycling {stroke: #00cdec; stroke-opacity: 0.6;stroke-width: 1}
-#section3 .transport {stroke: white; stroke-opacity: 0.3; stroke-width: 0.5}
-
-#section3 .riverbank,
-#section3 .ocean,
-#section3 .dock,
-#section3 .water,
-#section3 .reservoir,
-#section3 .scree,
-#section3 .lake {fill: #222222; stroke: #222222;}
-
-/* ======= SECTION 4 ================ */
-
-#section4 .svg-chart { background-color: black;}
-
-#section4 .walking {stroke: #83DD0D; stroke-opacity: 0.8; stroke-width: 1}
-#section4 .running {stroke: #FFB800; stroke-opacity: 0.8; stroke-width: 1}
-#section4 .cycling {stroke: #00cdec; stroke-opacity: 0.6;stroke-width: 0.5}
-#section4 .transport {stroke: #FF21F8; stroke-opacity: 0.2; stroke-width: 0.1}
-
-#section4 .major_road { stroke: #6E6E6E; stroke-opacity: 0.5;}
-#section4 .minor_road { stroke: #6E6E6E; stroke-opacity: 0.3;}
-#section4 .highway { stroke: #6E6E6E; stroke-width: 1.5px; stroke-opacity: 0.5;}
-#section4 .rail { stroke: #7de; }
-
-#section4 .riverbank,
-#section4 .ocean,
-#section4 .dock,
-#section4 .water,
-#section4 .reservoir,
-#section4 .scree,
-#section4 .lake {fill: white; stroke: white;}
+.riverbank,
+.ocean,
+.dock,
+.water,
+.reservoir,
+.scree,
+.lake {fill: white; stroke: white;}
 

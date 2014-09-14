@@ -12,7 +12,6 @@ module.exports = function(app, passport) {
 
 	// Index page.
 	app.get('/', function(req, res){
-		console.log(req.user);
 		res.render('index', { user: req.user, name: req.user});
 	});
 
@@ -27,8 +26,6 @@ module.exports = function(app, passport) {
 		Moves.find()
 		.select('-_id tracks').sort([['day', 'ascending']])
 		.exec( function (err, tracks) {
-			console.log('\n\n\ ******** I MADE IT ******** \n\n')
-			//res.render('index', { user: req.user, name: req.user, data: tracks});
 			res.json(tracks)
 		})
 		
@@ -54,7 +51,6 @@ module.exports = function(app, passport) {
 	  function(req, res){
 	    // The request will be redirected to Moves for authentication, so this
 	    // function will not be called.
-	    console.log('you should not get here!');
 	  });
 
 	// GET /auth/asana/callback
