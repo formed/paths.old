@@ -1,24 +1,42 @@
 
 
 var width = Math.max(960, window.innerWidth),
-    height = Math.max(500, window.innerHeight);
+    height = Math.max(505, window.innerHeight+5);
+
+
+
+
+baseMap('#section1',13);
+baseMap('#section2',16);
+baseMap('#section3',19);
+baseMap('#section4',20);
+
+
+d3.json('moves/tracks', function(error, movesData) {
+  addMovesData(movesData, '#section1', 13);
+  addMovesData(movesData, '#section2', 16);
+  addMovesData(movesData, '#section3', 19);
+  addMovesData(movesData, '#section4', 20);
+});
+
+
+function baseMap(section, zoomLevel) {
 
 var tiler = d3.geo.tile()
     .size([width, height]);
 
 var projection = d3.geo.mercator()
     .center([-2.65, 51.48])
-    .scale((1 << 20) / 2 / Math.PI)
+    .scale((1 << zoomLevel) / 2 / Math.PI)
     .translate([width / 2, height / 2]);
-
 
 var path = d3.geo.path()
     .projection(projection);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select(section).append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("class", "svg-chart");;
+    .attr("class", "svg-chart");
 
 svg.selectAll("g")
     .data(tiler
@@ -42,14 +60,27 @@ svg.selectAll("g")
             .attr("class", function(d) { return d.properties.kind; })
             .attr("d", path);
       });
- });
 
-d3.json('http://127.0.0.1:3000/moves/tracks', function(error, trackData) {
-    for (var i = 0; i < trackData.length; i++) {
+
+ });
+}
+
+function addMovesData(movesData, section, zoomLevel) {
+    var svg = d3.select(section + ' svg');
+
+  var projection = d3.geo.mercator()
+      .center([-2.65, 51.48])
+      .scale((1 << zoomLevel) / 2 / Math.PI)
+      .translate([width / 2, height / 2]);
+
+  var path = d3.geo.path()
+      .projection(projection);
+
+    for (var i = 0; i < movesData.length; i++) {
         svg.selectAll("g")
-        .data(trackData[i].tracks.features)
+        .data(movesData[i].tracks.features)
         .enter().append("path")
         .attr("class", function(d) { return d.properties.activity; })
         .attr("d",path)
     };
-});
+}
