@@ -6,55 +6,24 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cinzel">
     <link rel="stylesheet" href="visualise.css">
     <link rel="icon" type="image/png" href="logo.png">
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 </head>
 
 <body>
 
 <div class="main">
-<section>
-<header>
-    <h1>Paths @ Formed</h1>
-    <p id='loading'><em>Loading your paths, bear with us...</em></p>
-    <p id='zoomInstructions'><em>Press z to zoom out, x to zoom in</em></p>
-</header>
-</section>
 
 <section class='sticky' id='section4'>
-    {{{body}}}
-<div id='chart'></div>
+<div id='map'></div>
 </section>
 
-<section class='sticky' id='section3'>
-</section>
-
-<section class='sticky' id='section2'>
-</section>
-
-<section class='sticky' id='section1'>
-</section>
-
-<section class='sticky'>
-    <footer>This is the footer</footer>
-</section>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="jquery.hotkeys.js"></script>
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="http://d3js.org/d3.geo.tile.v0.min.js"></script>
         <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
         <script src="http://d3js.org/topojson.v1.min.js"></script>
-        <script src="visualise.js"></script>
-        <script src="jquery.easing.min.js"></script>
-        <script src="jquery.scrollstop.js"></script>
-        <script src="jquery.scrollsnap.js"></script>
-
-        
-        <script type="text/javascript">
-$(document).ready(function() {
-    $(document).scrollsnap({
-        snaps: '.sticky',
-        proximity: 200
-    });
-});
-</script>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <script src="visualise.js"></script>     
 </body>
 </html>

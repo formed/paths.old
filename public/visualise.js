@@ -1,5 +1,34 @@
+var map = L.map('map').setView([51.48, -2.612574], 12);
+
+L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+maxZoom: 18,
+attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+id: 'examples.map-20v6611k'
+}).addTo(map);
+
+var trackLayer = L.geoJson().addTo(map);
 
 
+d3.json('moves/tracks', function(error, tracks) {
+  console.log(tracks)
+    for (var i = 0; i < tracks.length; i++) {
+        L.geoJson(tracks[i].tracks, {
+    style: function(feature) {
+        switch (feature.properties.activity) {
+            case 'walking': return {color: "#29E605", "opacity": 0.8, "weight": 1.5};
+            case 'running':   return {color: "#FFB800", "opacity": 0.8, "weight": 1.5};
+            case 'cycling':   return {color: "#00cdec", "opacity": 0.6, "weight": 1};
+            case 'transport':   return {color: "#FF21F8", "opacity": 0.4, "weight": 0.3};
+        }
+    }
+}).addTo(map)
+    };   
+});
+
+
+/*
 var width = Math.max(960, window.innerWidth),
     height = Math.max(505, window.innerHeight+5);
 
@@ -11,10 +40,10 @@ var svg = d3.select('#section4').append("svg")
 var z = {};
 z.levels                = [10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23];
 z.strokeWidth = {};
-z.strokeWidth.cycling   = [2, 2, 2, 1.5, 1.5, 1.5, 1.5, 1, 1, 0.5, 0.5, 0.5, 0.5];
+z.strokeWidth.cycling   = [2, 2, 2, 1.5, 1.5, 1.5, 1.5, 1, 1, 1, 1, 1, 1];
 z.strokeWidth.walking   = [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1];
 z.strokeWidth.running   = [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1];
-z.strokeWidth.transport = [2, 2, 1.5, 1, 1, 1, 1, 0.5, 0.5, 0.2, 0.1, 0.1, 0.1];
+z.strokeWidth.transport = [5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 var zoomLevel = 8;
 
@@ -23,6 +52,7 @@ baseMap('#section4', zoomLevel);
 
 d3.json('moves/tracks', function(error, movesData) {
   var movesData = movesData;
+  L.geoJson(movesData).addTo(map);
   addMovesData(movesData, '#section4', zoomLevel);
   $("#loading").remove();
   $('#zoomInstructions').show();
@@ -104,3 +134,4 @@ function addMovesData(movesData, section, zoomLevel) {
     $('.cycling').css('stroke-width', z.strokeWidth.cycling[zoomLevel]);
     $('.transport').css('stroke-width', z.strokeWidth.transport[zoomLevel]);
 }
+*/
