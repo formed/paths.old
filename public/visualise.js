@@ -33,10 +33,10 @@ d3.json('moves/tracks', function(error, tracks) {
         L.geoJson(tracks[i].tracks, {
     style: function(feature) {
         switch (feature.properties.activity) {
-            case 'walking': return {color: "#00D45B", "opacity": 0.8, "weight": 1.5};
-            case 'running':   return {color: "#FC00F8", "opacity": 0.8, "weight": 1.5};
+            case 'walking': return {color: "#00D45B", "opacity": 0.8, "weight": 1};
+            case 'running':   return {color: "#FC00F8", "opacity": 0.8, "weight": 1};
             case 'cycling':   return {color: "#00BFFF", "opacity": 0.8, "weight": 0.5};
-            case 'transport':   return {color: "#FF9F01", "opacity": 0.3, "weight": 0.4};
+            case 'transport':   return {color: getTransportColor(feature.properties.speed), "opacity": 0.3, "weight": 0.4};
         }
     }
 }).addTo(map)
@@ -46,28 +46,8 @@ d3.json('moves/tracks', function(error, tracks) {
 map.locate({setView: true, maxZoom: 12});
 
 function getTransportColor(d) {
-    return d > 40 ? '#FF76FB' :
-           d > 30  ? '#FF38F9' :
-           d > 20  ? '#FF00F7' :
-           d > 14   ? '#A1009C' :
-           d > 7   ? '#82007E' :
-                      '#62005F';
-}
-
-function getCyclingColor(d) {
-    return d > 40 ? '#FF76FB' :
-           d > 30  ? '#FF38F9' :
-           d > 20  ? '#FF00F7' :
-           d > 14   ? '#A1009C' :
-           d > 7   ? '#82007E' :
-                      '#62005F';
-}
-
-function getWalkingColor(d) {
-    return d > 40 ? '#FF76FB' :
-           d > 30  ? '#FF38F9' :
-           d > 20  ? '#FF00F7' :
-           d > 14   ? '#A1009C' :
-           d > 7   ? '#82007E' :
-                      '#62005F';
+    return d > 25 ? '#FF9F01' :
+           d > 15  ? '#ED6500' :
+           d > 10   ? '#ED4700' :
+                      '#ED0000';
 }
